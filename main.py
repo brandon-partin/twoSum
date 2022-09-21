@@ -1,23 +1,22 @@
 from typing import List
 
+class Solution:
 
-def twoSum(self, nums: List[int], target: int) -> List[int]:
-    nums.sort()
-    i = 0
-    j = 1
-    for num in nums:
-        for numbers in nums:
-            sum = nums[i] + nums[j]
-            if (sum == target):
-                return List[i,j]
-            j += 1
-        j = i + 1
-        i += 1
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        prevMap = {} # val : index
+
+        for i, n in enumerate(nums):
+            diff = target - n
+            if diff in prevMap:
+                return [prevMap[diff], i]
+            prevMap[n] = i
+        return
 
 
 if __name__ == '__main__':
+    p = Solution()
     nums = [0, 5, 3, 7, 9]
-    twoSum(nums, nums, 12)
+    print(p.twoSum(nums, 12))
 
 
 
